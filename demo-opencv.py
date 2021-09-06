@@ -69,14 +69,16 @@ while True:
           cv2.putText(img, button.text, (x + 20, y + 65), cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
           l, _ = detector.findDistance(lmList1[8], lmList1[12])
           ## When click
-          if l < 35:
+          if l < 30:
             cv2.rectangle(img, button.pos, (x+w, y+h), (0, 255, 0), cv2.FILLED)
             cv2.putText(img, button.text, (x + 20, y + 65), cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 4)
             finalText += button.text
+            if len(finalText) > 50:
+              finalText = ""
 
 
     cv2.rectangle(img, (50, 350), (700, 450), (175, 0, 175), cv2.FILLED)
-    cv2.putText(img, finalText, (60, 500), cv2.FONT_HERSHEY_PLAIN, 5, (255, 255, 255), 5)
+    cv2.putText(img, finalText, (60, 430), cv2.FONT_HERSHEY_PLAIN, 5, (255, 255, 255), 5)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
